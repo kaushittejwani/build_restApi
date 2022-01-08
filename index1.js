@@ -54,7 +54,7 @@ app.get("/search/:status", (req, res) => {
 })
 
 
-//delete api
+//delete request
 app.delete('/:id', (req, res) => {
     users1.deleteOne({ id: req.params.id }).then((result) => {
         res.status(200).json(result)
