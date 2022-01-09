@@ -31,7 +31,7 @@ app.post("/api/Create/UsersProfiles", (req, res) => {
 })
 
 //put request
-app.put("/api/update/UsersProfiles/:id", (req, res) => {
+app.put("/api/update/:id/UsersProfiles", (req, res) => {
     users1.updateOne({ id: req.params.id }, { $set: { status: req.body.status } })
         .then((resut) => {
             res.status(200).json(resut)
@@ -45,7 +45,7 @@ app.put("/api/update/UsersProfiles/:id", (req, res) => {
 
 
 //searcch request
-app.get("/api/get/search/UsersProfiles/:status", (req, res) => {
+app.get("/api/get/search/:status/UsersProfiles", (req, res) => {
     var regex = new RegExp(req.params.status, 'i');
     users1.find({ status: regex }).then((result) => {
         res.status(200).json(result)
@@ -55,7 +55,7 @@ app.get("/api/get/search/UsersProfiles/:status", (req, res) => {
 
 
 //delete request
-app.delete('/api/delete/UsersProfiles/:id', (req, res) => {
+app.delete('/api/delete/:id/UsersProfiles", (req, res) => {
     users1.deleteOne({ id: req.params.id }).then((result) => {
         res.status(200).json(result)
     })
