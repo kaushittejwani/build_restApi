@@ -8,7 +8,7 @@ const users1=require("./users1");
 app.use(express.json())
 
 //Get request
-app.get("/api/get", (req, res) => {
+app.get("/api/get/UsersProfiles", (req, res) => {
     users1.find().then((data) => {
         res.send(data);
         console.log(data);
@@ -16,7 +16,7 @@ app.get("/api/get", (req, res) => {
 })
 
 //post request
-app.post("/api/post", (req, res) => {
+app.post("/api/Create/UsersProfiles", (req, res) => {
     console.log(req.body);
     const data = new users1({
         _id: new mongoose.Types.ObjectId(),
@@ -31,7 +31,7 @@ app.post("/api/post", (req, res) => {
 })
 
 //put request
-app.put("/api/update/:id", (req, res) => {
+app.put("/api/update/UsersProfiles/:id", (req, res) => {
     users1.updateOne({ id: req.params.id }, { $set: { status: req.body.status } })
         .then((resut) => {
             res.status(200).json(resut)
@@ -45,7 +45,7 @@ app.put("/api/update/:id", (req, res) => {
 
 
 //searcch request
-app.get("/api/get/search/:status", (req, res) => {
+app.get("/api/get/search/UsersProfiles/:status", (req, res) => {
     var regex = new RegExp(req.params.status, 'i');
     users1.find({ status: regex }).then((result) => {
         res.status(200).json(result)
@@ -55,7 +55,7 @@ app.get("/api/get/search/:status", (req, res) => {
 
 
 //delete request
-app.delete('/api/delete/:id', (req, res) => {
+app.delete('/api/delete/UsersProfiles/:id', (req, res) => {
     users1.deleteOne({ id: req.params.id }).then((result) => {
         res.status(200).json(result)
     })
